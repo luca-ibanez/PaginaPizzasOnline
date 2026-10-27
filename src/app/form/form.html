@@ -1,0 +1,19 @@
+<div>
+    <form>
+        <div class="mb-3">
+            <label>Hora para entregar:</label>
+            <input type="time" class="form-control">
+            <label>Lugar donde entregar:</label>
+            <input type="address" class="form-control">
+            <label class="form-check-label" for="metodoDePagar">BIZUM</label>
+            <input type="radio" class="form-check-input" name="metodoDePagar" id="Bizum" (click)="bizumChecked()" checked>
+            <label class="form-check-label" for="metodoDePagar">Tarjeta</label>
+            <input type="radio" class="form-check-input" name="metodoDePagar" id="Tarjeta" (click)="tarjetaChecked()">
+            @if (ocultarBizun) {
+                <input class="form-control" type="text" name="introducirTarjeta" placeholder="Introduce tu tarjeta">
+            } @else {
+                <input class="form-control" type="number" name="introducirTelefono" placeholder="Introduce tu numero de telefono">
+            }
+        </div>
+    </form>
+</div>

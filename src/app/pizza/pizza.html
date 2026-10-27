@@ -1,0 +1,5 @@
+<div class="row">
+    @for (CaracteristicasDePizza of pizzas; track $index) {
+        <app-lista-de-pizzas [caracteristicas]="CaracteristicasDePizza"></app-lista-de-pizzas>    
+    }
+</div>
