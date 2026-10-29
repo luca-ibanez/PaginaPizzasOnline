@@ -13,4 +13,9 @@ import { ContactForm } from './contact-form/contact-form';
 })
 export class App {
   protected readonly title = signal('PaginaPizzasOnline');
+  ingredienteBuscado: string = "";
+
+  buscarIngrediente(ingrediente: string) {
+    this.ingredienteBuscado = ingrediente;
+  }
 }

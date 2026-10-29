@@ -8,4 +8,8 @@
             <li class="list-group-item">{{ingrediente}}</li>
         }
     </ul>
+    <form (ngSubmit)="AnadirPizza()">
+        <input type="text" class="form-control" name="cantidad" id="cantidadDePizzasASumar" placeholder="Cantidad" [(ngModel)]="cantidad">
+        <button type="submit" class="btn btn-primary">Añadir pizzas</button>
+    </form>
 </div>

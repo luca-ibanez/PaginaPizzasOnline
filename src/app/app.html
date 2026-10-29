@@ -1,7 +1,6 @@
-<app-head></app-head>
-<app-pizza></app-pizza>
+<app-head (ingredienteBuscado)="buscarIngrediente($event)"></app-head>
+<app-pizza [ingredienteBuscado]="ingredienteBuscado"></app-pizza>
 <app-form></app-form>
-<br>
 <br>
 <br>
 <app-contact-form></app-contact-form>
