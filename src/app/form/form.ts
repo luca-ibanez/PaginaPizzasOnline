@@ -1,5 +1,6 @@
-import { Component, output } from '@angular/core';
+import { Component, output, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { PedidoService } from '../services/pedido.service';
 
 @Component({
   imports: [ReactiveFormsModule],
@@ -9,11 +10,14 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 })
 export class Form {
 
+  private pedidoServicio = inject(PedidoService);
+
   contactForm = new FormGroup({
     hora: new FormControl('', [Validators.required]),
     direccion: new FormControl('', [Validators.required]),
     numeroTarjeta: new FormControl('', [Validators.required, Validators.minLength(16), Validators.maxLength(16)]),
     numeroTelefono: new FormControl('', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]),
+    metodoDePagar: new FormControl('bizum'),
   });
   //TOLEARN Los input son type=text para esto, ya que si no lo fueran los Validators.minLength y maxLength no funcionarian.
 
@@ -44,8 +48,16 @@ export class Form {
       alert("¡El numero de telefono tiene que tener 9 numeros!");
     } else {
       alert('Ya esta! Se enviara todo a '+ this.contactForm.value.direccion + ' y llegara a las ' + this.contactForm.value.hora);
+      this.limpiarTodo();
     }
   }
+
+  limpiarTodo() {
+    this.contactForm.reset({
+      metodoDePagar: 'bizum'
+    });
+    this.ocultarBizun = false;
+  } //TOLEARN esto resetea todo el formulario, pone el metodoDePagar a Bizum (Y la variable que se usa en el html para cual mostrar)
 
   eventClick = output();
   ocultarBizun = false;

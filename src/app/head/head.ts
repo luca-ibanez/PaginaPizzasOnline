@@ -1,16 +1,23 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { CaracteristicasDePizza } from '../models/caracteristicas-de-pizza';
+import { Component, inject } from '@angular/core';
+import { Buscador } from '../services/buscador';
+import { RouterLink } from '@angular/router';
 
 @Component({
-  imports: [],
+  imports: [RouterLink],
   selector: 'app-head',
   styleUrl: './head.scss',
   templateUrl: './head.html',
 })
 export class Head {
-  @Output() ingredienteBuscado = new EventEmitter<string>();
+  buscadorServicio = inject(Buscador);
 
-  buscarIngrediente(ingrediente: string) {
-    this.ingredienteBuscado.emit(ingrediente)
+  buscarIngrediente(ingrediente: string): void {
+    this.buscadorServicio.buscarIngrediente(ingrediente);
+  }
+  constructor() {
+    console.log("Head creado");
   }
 }
+//TOLEARN: Aqui pedimos a Angular una instancia del servicio Buscador y de root
+//Estamos usando la misma instancia, el mismo objeto. A si que son un dato junto.
+//Aqui basicamente pongo como una referencia

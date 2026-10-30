@@ -4,14 +4,13 @@
             <label>Hora para entregar:</label>
             <input type="time" class="form-control" id="inputDeHora" formControlName="hora">
 
-            <label for="exampleFormControlInput1" class="form-label">Direccion:</label>
+            <label class="form-label">Direccion:</label>
             <input type="text" class="form-control" id="inputDeDireccion" formControlName="direccion" placeholder="Avenida 1">
 
             <label class="form-check-label" for="metodoDePagar">BIZUM</label>
-            <input type="radio" class="form-check-input" name="metodoDePagar" id="Bizum" (click)="bizumChecked()"
-                checked>
+            <input type="radio" class="form-check-input" name="metodoDePagar" id="Bizum" (click)="bizumChecked()" formControlName="metodoDePagar" value="bizum">
             <label class="form-check-label" for="metodoDePagar">Tarjeta</label>
-            <input type="radio" class="form-check-input" name="metodoDePagar" id="Tarjeta" (click)="tarjetaChecked()">
+            <input type="radio" class="form-check-input" name="metodoDePagar" id="Tarjeta" (click)="tarjetaChecked()" formControlName="metodoDePagar" value="tarjeta">
             @if (ocultarBizun) {
             <input class="form-control" type="text" name="introducirTarjeta" placeholder="Introduce tu tarjeta" id="numeroTarjeta" formControlName="numeroTarjeta">
             } @else {

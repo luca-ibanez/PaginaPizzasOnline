@@ -15,6 +15,17 @@ export class ListaDePizzas {
   cantidad: string = "";
 
   AnadirPizza(): void {
-    //TODO: Añadir proceso que pase al clickear en esto
+    const cantidadEnInt = Number(this.cantidad);
+
+    if (!Number.isInteger(cantidadEnInt) || cantidadEnInt <= 0) {
+      return;
+    } //TOLEARN Aqui coge la cantidad y comprueba que sea un numero/no 0
+
+    this.anadirPizza.emit({
+      caracteristicas: this.caracteristicas(),
+      cantidad: cantidadEnInt
+    }); //TOLEARN Aqui emite un objeto con la pizza y la cantidad
+
+    this.cantidad = ""; //Esto vacia el input
   }
 }

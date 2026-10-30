@@ -1,0 +1,11 @@
+<h1>Los pedidos:</h1>
+
+<!-- TODO: Como aparecera las pizzas compradas y demas-->
+ @for (pizza of pedidoServicio.pedido().pizzas; track pizza.caracteristicas.nombre) {
+    <div class="card p-3 mb-3">
+        {{pizza.cantidad}}: {{pizza.caracteristicas.nombre}} X {{pizza.caracteristicas.precio}} = {{pizza.caracteristicas.precio * pizza.cantidad}}€
+    </div>
+ } @empty {
+    <p>¡El pedido esta vacio!</p>
+ }
+<app-form></app-form>

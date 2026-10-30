@@ -1,5 +1,6 @@
 <div class="row">
-    @for (CaracteristicasDePizza of pizzasFiltradas; track $index) {
-        <app-lista-de-pizzas [caracteristicas]="CaracteristicasDePizza"></app-lista-de-pizzas>    
+    @for (CaracteristicasDePizza of pizzasFiltradas(); track $index) {
+        <app-lista-de-pizzas [caracteristicas]="CaracteristicasDePizza" (anadirPizza)="anadirAlPedido($event)"></app-lista-de-pizzas>    
+        <!--TOLEARN el anadirPizza es: cuando app-lista-de-pizzas emita un evento llamado anadirPizza, usar anadirAlPedido() de pizza.html-->
     }
 </div>

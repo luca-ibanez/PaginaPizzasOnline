@@ -1,8 +1,9 @@
 <nav class="navbar">
 	<div class="container-fluid" style="height: 200px">
 		<a class="navbar-brand" href="#"><img src="https://cuatrovientos.org/wp-content/uploads/2025/01/LOGO-CENTRO-INTEGRADO-CUATROVIENTOS-300x115-2.png" alt="Bootstrap" width="200" height="100">Luca Ibañez</a>
-        <input #buscador type="text" class="form-control" id="buscarPizzasPorIngrediente" (input)="buscarIngrediente(buscador.value)">
-        <a class="nav-item dropdown" href="http://localhost:4200/">Ver Pizzas</a>
-        <a class="navbar-item" href="#">Realizar Pedido</a>
+        <input #buscador type="text" class="form-control" id="buscarPizzasPorIngrediente" [value]="buscadorServicio.ingredienteBuscado()" (input)="buscarIngrediente(buscador.value)">
+        <a class="nav-item dropdown" routerLink="/pizzas">Ver Pizzas</a>
+        <a class="navbar-item" routerLink="/pedidos">Realizar Pedido</a>
+        <!--TOLEARN Usar routerLink y NO href o no funcionara-->
 	</div>
 </nav>
