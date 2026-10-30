@@ -1,19 +1,49 @@
 <div>
-    <form>
+    <form [formGroup]="contactForm" (ngSubmit)="sendMessage()">
         <div class="mb-3">
             <label>Hora para entregar:</label>
-            <input type="time" class="form-control">
-            <label>Lugar donde entregar:</label>
-            <input type="address" class="form-control">
+            <input type="time" class="form-control" id="inputDeHora" formControlName="hora">
+
+            <label for="exampleFormControlInput1" class="form-label">Direccion:</label>
+            <input type="text" class="form-control" id="inputDeDireccion" formControlName="direccion" placeholder="Avenida 1">
+
             <label class="form-check-label" for="metodoDePagar">BIZUM</label>
-            <input type="radio" class="form-check-input" name="metodoDePagar" id="Bizum" (click)="bizumChecked()" checked>
+            <input type="radio" class="form-check-input" name="metodoDePagar" id="Bizum" (click)="bizumChecked()"
+                checked>
             <label class="form-check-label" for="metodoDePagar">Tarjeta</label>
             <input type="radio" class="form-check-input" name="metodoDePagar" id="Tarjeta" (click)="tarjetaChecked()">
             @if (ocultarBizun) {
-                <input class="form-control" type="text" name="introducirTarjeta" placeholder="Introduce tu tarjeta">
+            <input class="form-control" type="text" name="introducirTarjeta" placeholder="Introduce tu tarjeta" id="numeroTarjeta" formControlName="numeroTarjeta">
             } @else {
-                <input class="form-control" type="number" name="introducirTelefono" placeholder="Introduce tu numero de telefono">
+            <input class="form-control" type="text" name="introducirTelefono" placeholder="Introduce tu numero de telefono" id="numeroTelefono" formControlName="numeroTelefono">
             }
+            <button type="submit" class="btn btn-primary">Pagar</button>
         </div>
+        <br>
+        @if ((direccion?.invalid && direccion?.dirty) || (hora?.invalid && hora?.dirty) || ((ocultarBizun == true) && (numeroTarjeta?.dirty) && (numeroTarjeta?.invalid)) || ((ocultarBizun == false) && (numeroTelefono?.dirty) && (numeroTelefono?.invalid))) {
+            <div class="alert alert-danger">
+            @if (direccion?.invalid && direccion?.dirty) {
+                <div>
+                    Se necesita escribir una direccion.
+                </div>
+            }
+            @if (hora?.invalid && hora?.dirty) {
+                <div>
+                    Se necesita poner una hora valida.
+                </div>
+            }
+            @if ((ocultarBizun == true) && (numeroTarjeta?.dirty)) {
+                <div>
+                    Se necesita poner un numero de tarjeta.
+                </div>
+            }
+            @if ((ocultarBizun == false) && (numeroTelefono?.dirty)) {
+                <div>
+                    Se necesita poner un numero de telefono.
+                </div>
+            }
+            </div>
+        }
+        <br>
     </form>
 </div>

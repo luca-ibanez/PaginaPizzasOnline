@@ -3,10 +3,9 @@ import { RouterOutlet } from '@angular/router';
 import { Pizza } from './pizza/pizza';
 import { Head } from './head/head';
 import { Form } from './form/form';
-import { ContactForm } from './contact-form/contact-form';
 
 @Component({
-  imports: [RouterOutlet, Pizza, Head, Form, ContactForm],
+  imports: [RouterOutlet, Pizza, Head, Form],
   selector: 'app-root',
   styleUrl: './app.scss',
   templateUrl: './app.html',
