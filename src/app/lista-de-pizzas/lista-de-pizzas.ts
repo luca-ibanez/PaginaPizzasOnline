@@ -15,11 +15,6 @@ export class ListaDePizzas {
   cantidad: string = "";
 
   AnadirPizza(): void {
-    const cantidadEnInt = Number(this.cantidad)
-    if (!Number.isInteger(cantidadEnInt) || cantidadEnInt <= 0) {
-      return;
-    } else {
-      this.anadirPizza.emit({caracteristicas: this.caracteristicas(), cantidad: cantidadEnInt});
-    }
+    //TODO: Añadir proceso que pase al clickear en esto
   }
 }

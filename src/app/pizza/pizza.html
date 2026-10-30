@@ -1,5 +1,5 @@
 <div class="row">
     @for (CaracteristicasDePizza of pizzasFiltradas; track $index) {
-        <app-lista-de-pizzas [caracteristicas]="CaracteristicasDePizza" (anadirPizza)="reenviarPizza($event)"></app-lista-de-pizzas>    
+        <app-lista-de-pizzas [caracteristicas]="CaracteristicasDePizza"></app-lista-de-pizzas>    
     }
 </div>
