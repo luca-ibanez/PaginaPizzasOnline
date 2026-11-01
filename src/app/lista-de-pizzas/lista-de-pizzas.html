@@ -1,4 +1,4 @@
-<div class="col-sm-12 col-md-6 w-md-50 col-lg-3 w-lg-25 card">
+<div>
     <h1 class="card-title">{{caracteristicas().nombre}}</h1>
     <img src="{{caracteristicas().imagen}}" class="card-img">
     <h2 class="card-text">Precio: {{caracteristicas().precio}}€</h2>
@@ -8,8 +8,10 @@
             <li class="list-group-item">{{ingrediente}}</li>
         }
     </ul>
-    <form (ngSubmit)="AnadirPizza()">
+    <br>
+    <form class="mb-3" (ngSubmit)="AnadirPizza()">
         <input type="text" class="form-control" name="cantidad" id="cantidadDePizzasASumar" placeholder="Cantidad" [(ngModel)]="cantidad">
+        <br>
         <button type="submit" class="btn btn-primary">Añadir pizzas</button>
     </form>
 </div>

@@ -1,22 +1,30 @@
 <div>
     <form [formGroup]="contactForm" (ngSubmit)="sendMessage()">
-        <div class="mb-3">
-            <label>Hora para entregar:</label>
-            <input type="time" class="form-control" id="inputDeHora" formControlName="hora">
-
-            <label class="form-label">Direccion:</label>
-            <input type="text" class="form-control" id="inputDeDireccion" formControlName="direccion" placeholder="Avenida 1">
-
-            <label class="form-check-label" for="metodoDePagar">BIZUM</label>
-            <input type="radio" class="form-check-input" name="metodoDePagar" id="Bizum" (click)="bizumChecked()" formControlName="metodoDePagar" value="bizum">
-            <label class="form-check-label" for="metodoDePagar">Tarjeta</label>
-            <input type="radio" class="form-check-input" name="metodoDePagar" id="Tarjeta" (click)="tarjetaChecked()" formControlName="metodoDePagar" value="tarjeta">
+        <div class="mb-3"> <!--TOLEARN mb-3 es para margin abajo-->
+            <div class="d-flex align-items-center gap-2">
+                <label>Hora:</label>
+                <input type="time" class="form-control" id="inputDeHora" formControlName="hora">
+            </div>
+            <br>
+            <div class="d-flex align-items-center gap-2">
+                <label class="form-label">Direccion:</label>
+                <input type="text" class="form-control" id="inputDeDireccion" formControlName="direccion" placeholder="Avenida 1">
+            </div>
+            <br>
+            <div class="d-flex gap-2">
+                <label class="form-check-label" for="metodoDePagar">BIZUM</label>
+                <input type="radio" class="form-check-input" name="metodoDePagar" id="Bizum" (click)="bizumChecked()" formControlName="metodoDePagar" value="bizum">
+                <label class="form-check-label" for="metodoDePagar">Tarjeta</label>
+                <input type="radio" class="form-check-input" name="metodoDePagar" id="Tarjeta" (click)="tarjetaChecked()" formControlName="metodoDePagar" value="tarjeta">
+            <br>
             @if (ocultarBizun) {
             <input class="form-control" type="text" name="introducirTarjeta" placeholder="Introduce tu tarjeta" id="numeroTarjeta" formControlName="numeroTarjeta">
             } @else {
             <input class="form-control" type="text" name="introducirTelefono" placeholder="Introduce tu numero de telefono" id="numeroTelefono" formControlName="numeroTelefono">
             }
-            <button type="submit" class="btn btn-primary">Pagar</button>
+            <button class="text-center" type="submit" class="btn btn-primary">Pagar</button>
+            <button class="text-center" type="button" class="btn btn-primary" (click)="limpiarTodo()">Limpiar</button>
+            </div>
         </div>
         <br>
         @if ((direccion?.invalid && direccion?.dirty) || (hora?.invalid && hora?.dirty) || ((ocultarBizun == true) && (numeroTarjeta?.dirty) && (numeroTarjeta?.invalid)) || ((ocultarBizun == false) && (numeroTelefono?.dirty) && (numeroTelefono?.invalid))) {
